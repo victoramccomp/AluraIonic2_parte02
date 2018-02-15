@@ -38,6 +38,12 @@ export class AgendamentosPage {
                         subTitle: 'Agendamento reenviado com sucesso!',
                         buttons: [{ text: 'Ok' }]
                     }).present();
+                } else {
+                    this._alertCtrl.create({
+                        title: 'Envio',
+                        subTitle: 'Não foi possível enviar, tente novamente mais tarde!!',
+                        buttons: [{ text: 'Ok' }]
+                    }).present();
                 }
             });
     }
