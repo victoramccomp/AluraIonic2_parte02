@@ -13,7 +13,6 @@ import { UsuarioService } from '../domain/usuario/usuario-service';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/toPromise';
 import { Storage } from '@ionic/storage';
-import { StorageConfig } from '@ionic/storage';
 import { AgendamentoDao } from '../domain/agendamento/agendamento-dao';
 import { AgendamentosPage } from '../pages/agendamentos/agendamentos';
 import { LoginPage } from '../pages/login/login';
