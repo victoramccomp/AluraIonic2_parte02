@@ -4,7 +4,8 @@ import { Carro } from '../../domain/carro/carro';
 import { HomePage } from '../home/home';
 import { Agendamento } from '../../domain/agendamento/agendamento';
 import { AgendamentoService } from '../../domain/agendamento/agendamento-service';
-
+import { Vibration  } from '@ionic-native/vibration';
+import { DatePicker } from '@ionic-native/date-picker';
 
 @Component({
 	selector: 'page-cadastro',
@@ -21,7 +22,9 @@ export class CadastroPage {
 		public navCtrl: NavController, 
 		public navParams: NavParams,
 		private _service: AgendamentoService,
-		private _alertCtrl: AlertController) {
+		private _alertCtrl: AlertController,
+		public vibration: Vibration,
+		public datePicker: DatePicker) {
 
 		this.carro = this.navParams.get('carro');
 		this.precoTotal = this.navParams.get('precoTotal');
@@ -36,7 +39,9 @@ export class CadastroPage {
 
 	agendar() {
 
+		this.vibration.vibrate(5000);
 		if(!this.agendamento.nome || !this.agendamento.data || !this.agendamento.email || !this.agendamento.endereco) {
+
 
 			this._alertCtrl.create({
 				title: 'Preenchimento obrigatório',
@@ -59,5 +64,14 @@ export class CadastroPage {
 				this._alerta.setSubTitle(error.message);
 				this._alerta.present();
 			});
+	}
+
+	selecionarData() {
+
+		this.datePicker.show({
+			date: new Date(),
+			mode: 'date'
+		})
+		.then(data => this.agendamento.data = data.toISOString());
 	}
 }	

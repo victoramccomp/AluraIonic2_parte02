@@ -18,10 +18,13 @@ import { AgendamentosPage } from '../pages/agendamentos/agendamentos';
 import { LoginPage } from '../pages/login/login';
 import { PerfilPage } from '../pages/perfil/perfil';
 
+import { Vibration } from '@ionic-native/vibration'; 
+import { DatePicker } from '@ionic-native/date-picker'; 
+import { Camera } from '@ionic-native/camera';
+
 function provideStorage() {
   
   return new Storage({
-    driverOrder: ['indexeddb'],
     name: 'aluracar',
     storeName: 'agendamentos'
   });
@@ -55,6 +58,9 @@ function provideStorage() {
   providers: [
     StatusBar,
     SplashScreen,
+    Vibration,
+    DatePicker,
+    Camera,
     AgendamentoService,
     AgendamentoDao,
     UsuarioService,
